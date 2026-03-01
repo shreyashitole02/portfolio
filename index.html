@@ -11,15 +11,12 @@
     <!-- Open Graph Meta Tags for LinkedIn/Social Media -->
     <meta property="og:title" content="Shreya Shitole - Software Developer Portfolio">
     <meta property="og:description" content="Computer Science Graduate Student | Software Developer | AI/ML Enthusiast specializing in Python, React, Machine Learning, and Web Development">
-    <meta property="og:image" content="https://raw.githubusercontent.com/shreyashitole02/portfolio/main/portfolio-preview.png">
     <meta property="og:url" content="https://shreyashitole02.github.io/portfolio/">
     <meta property="og:type" content="website">
     
     <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Shreya Shitole - Software Developer Portfolio">
     <meta name="twitter:description" content="Computer Science Graduate Student | Software Developer | AI/ML Enthusiast">
-    <meta name="twitter:image" content="https://raw.githubusercontent.com/shreyashitole02/portfolio/main/portfolio-preview.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .smooth-scroll {
@@ -274,51 +271,30 @@
                     </nav>
 
                     {/* Hero */}
-                    <header className="container mx-auto px-6 py-32 mt-16">
-                        <div className="max-w-4xl mx-auto text-center">
-                            {/* Profile Photo */}
-                            <div className="mb-8 flex justify-center">
-                                <div className="relative w-40 h-40 md:w-48 md:h-48">
-                                    <img 
-                                        src="https://github.com/shreyashitole02/portfolio/raw/main/profile-photo.jpg" 
-                                        alt="Shreya Shitole"
-                                        className={`w-full h-full object-cover rounded-full border-4 ${isDark ? 'border-blue-500' : 'border-blue-400'} shadow-2xl glow-on-hover`}
-                                        onError={(e) => {
-                                            e.target.style.display = 'none';
-                                            e.target.nextElementSibling.style.display = 'flex';
-                                        }}
-                                    />
-                                    <div 
-                                        style={{display: 'none'}}
-                                        className={`w-full h-full rounded-full border-4 ${isDark ? 'border-blue-500 bg-gray-800' : 'border-blue-400 bg-gray-200'} flex items-center justify-center text-6xl font-bold ${accentColor}`}
-                                    >
-                                        SS
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <h1 className={`text-5xl md:text-7xl font-bold ${textPrimary} mb-6 glow-text-hover`}>
-                                Shreya Shitole
-                            </h1>
-                            <p className={`text-xl md:text-2xl ${textSecondary} mb-8`}>
-                                Computer Science Graduate Student | Software Developer | AI/ML Enthusiast
-                            </p>
-                            <div className="flex justify-center gap-6 mb-8">
-                                <a href="mailto:shitoleshreya2002@gmail.com" className={`${accentColor} hover:scale-110 transition text-2xl glow-on-hover p-2 rounded-full`} title="Email me">✉️</a>
-                                <a href="https://linkedin.com/in/shreya-shitole" target="_blank" rel="noopener noreferrer" className={`${accentColor} hover:scale-110 transition text-2xl glow-on-hover p-2 rounded-full`} title="LinkedIn Profile">💼</a>
-                                <a href="https://github.com/shreyashitole02" target="_blank" rel="noopener noreferrer" className={`${accentColor} hover:scale-110 transition text-2xl glow-on-hover p-2 rounded-full`} title="GitHub Profile">💻</a>
-                            </div>
-                            <p className={`${textSecondary} text-lg mb-6`}>
-                                📍 Fairfax, Virginia
-                            </p>
-                            <button 
-                                onClick={handleDownloadResume}
-                                className={`inline-block ${accentBg} hover:opacity-90 text-white font-bold py-3 px-8 rounded-full transition glow-on-hover`}
-                            >
-                                📥 Resume
-                            </button>
-                        </div>
-                    </header>
+<header className="container mx-auto px-6 py-32 mt-16">
+    <div className="max-w-4xl mx-auto text-center">
+        <h1 className={`text-5xl md:text-7xl font-bold ${textPrimary} mb-6 glow-text-hover`}>
+            Shreya Shitole
+        </h1>
+        <p className={`text-xl md:text-2xl ${textSecondary} mb-8`}>
+            Computer Science Graduate Student | Software Developer | AI/ML Enthusiast
+        </p>
+        <div className="flex justify-center gap-6 mb-8">
+            <a href="mailto:shitoleshreya2002@gmail.com" className={`${accentColor} hover:scale-110 transition text-2xl glow-on-hover p-2 rounded-full`} title="Email me">✉️</a>
+            <a href="https://linkedin.com/in/shreya-shitole" target="_blank" rel="noopener noreferrer" className={`${accentColor} hover:scale-110 transition text-2xl glow-on-hover p-2 rounded-full`} title="LinkedIn Profile">💼</a>
+            <a href="https://github.com/shreyashitole02" target="_blank" rel="noopener noreferrer" className={`${accentColor} hover:scale-110 transition text-2xl glow-on-hover p-2 rounded-full`} title="GitHub Profile">💻</a>
+        </div>
+        <p className={`${textSecondary} text-lg mb-6`}>
+            📍 Fairfax, Virginia
+        </p>
+        <button 
+            onClick={handleDownloadResume}
+            className={`inline-block ${accentBg} hover:opacity-90 text-white font-bold py-3 px-8 rounded-full transition glow-on-hover`}
+        >
+            📥 Resume
+        </button>
+    </div>
+</header>
 
                     {/* Education */}
                     <section id="education" className="container mx-auto px-6 py-16">
@@ -536,3 +512,4 @@
 </body>
 
 </html>
+
