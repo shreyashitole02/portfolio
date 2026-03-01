@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shreya Shitole - Portfolio</title>
+    
+    <!-- Meta Description -->
+    <meta name="description" content="Computer Science Graduate Student | Software Developer | AI/ML Enthusiast. MS in CS at George Mason University with experience in Python, React, TensorFlow, and more.">
+    
+    <!-- Open Graph Meta Tags for LinkedIn/Social Media -->
+    <meta property="og:title" content="Shreya Shitole - Software Developer Portfolio">
+    <meta property="og:description" content="Computer Science Graduate Student | Software Developer | AI/ML Enthusiast specializing in Python, React, Machine Learning, and Web Development">
+    <meta property="og:image" content="https://raw.githubusercontent.com/shreyashitole02/portfolio/main/portfolio-preview.png">
+    <meta property="og:url" content="https://shreyashitole02.github.io/portfolio/">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Shreya Shitole - Software Developer Portfolio">
+    <meta name="twitter:description" content="Computer Science Graduate Student | Software Developer | AI/ML Enthusiast">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/shreyashitole02/portfolio/main/portfolio-preview.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .smooth-scroll {
+            scroll-behavior: smooth;
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .glow-on-hover {
+            transition: all 0.3s ease;
+        }
+        .glow-on-hover:hover {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5), 0 0 40px rgba(59, 130, 246, 0.3);
+            transform: translateY(-2px);
+        }
+        .glow-text-hover {
+            transition: all 0.3s ease;
+        }
+        .glow-text-hover:hover {
+            text-shadow: 0 0 10px rgba(59, 130, 246, 0.8);
+        }
+        .nav-link-glow:hover {
+            text-shadow: 0 0 8px rgba(59, 130, 246, 0.6);
+        }
+    </style>
+</head>
+<body class="smooth-scroll">
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        const { useState } = React;
+
+        function Portfolio() {
+            const [expandedProject, setExpandedProject] = useState(null);
+            const [isDark, setIsDark] = useState(true);
+            const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+            const scrollToSection = (id) => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                    setIsMenuOpen(false);
+                }
+            };
+
+            const handleDownloadResume = () => {
+                const resumeUrl = 'https://github.com/shreyashitole02/portfolio/raw/main/Shreya_Shitole.pdf';
+                window.open(resumeUrl, '_blank');
+            };
+
+            const projects = [
+                {
+                    id: 1,
+                    title: "RuleWise - Intelligent Event Monitoring Platform",
+                    tags: ["React.js", "Node.js", "Express", "PostgreSQL", "Tailwind CSS", "Vercel", "Render"],
+                    description: "Production-ready full-stack event monitoring system for real-time business rule evaluation and automated alert generation",
+                    details: [
+                        "Engineered full-stack monitoring platform using React.js, Node.js, Express, and PostgreSQL, implementing custom rule evaluation engine processing 1000+ events/day with sub-100ms response times",
+                        "Designed RESTful API with 6 endpoints featuring JSONB-based flexible rule storage, CORS-enabled microservices architecture, and real-time event processing capabilities",
+                        "Built responsive dark mode interface with Context API, implementing advanced features including dynamic search across 100+ rules, date-range filtering, and pre-built rule templates",
+                        "Deployed production-ready application on Vercel (frontend) and Render (backend + database) achieving 99.9% uptime with connection pooling and automatic backups",
+                        "Implemented hybrid recommender-style rule templates reducing rule setup time by 80% and improving user efficiency through one-click rule creation",
+                        "Achieved enterprise-grade architecture patterns similar to fraud detection systems at Stripe and AWS CloudWatch alarms"
+                    ],
+                    liveLink: "https://rulewise.vercel.app",
+                    githubLink: "https://github.com/shreyashitole02/rulewise"
+                },
+                {
+                    id: 2,
+                    title: "Tuberculosis Detection & Hospital Recommendation System",
+                    tags: ["Python", "TensorFlow", "Keras", "Flask", "Machine Learning", "CNN"],
+                    description: "End-to-end AI-powered healthcare platform for TB detection and hospital recommendations",
+                    details: [
+                        "Achieved 95% accuracy in tuberculosis detection using Convolutional Neural Networks (CNNs) on 7,000+ chest X-ray images",
+                        "Reduced diagnosis time by 80% compared to traditional manual screening methods through automated AI analysis",
+                        "Built production-ready Flask-based web GUI handling 100+ concurrent users with real-time prediction results",
+                        "Implemented hybrid recommender system combining content-based & collaborative filtering algorithms, improving hospital match accuracy by 40%",
+                        "Integrated demographic data analysis with medical imaging for personalized patient care recommendations",
+                        "Deployed model with 3-second average response time for X-ray analysis and hospital suggestions"
+                    ]
+                },
+                {
+                    id: 3,
+                    title: "PCB 'Airborne Ace' – Sensor Driven Flight Data System",
+                    tags: ["Arduino", "C++", "Eagle", "Hardware Design", "Embedded Systems"],
+                    description: "Custom avionics system for high-altitude rocket flight data acquisition and analysis",
+                    details: [
+                        "Engineered custom 2-layer PCB using Eagle (Autodesk) integrating 6+ sensors including barometers, accelerometers, and gyroscopes",
+                        "Programmed Arduino-based system collecting real-time flight data at 100Hz sampling rate during rocket launches",
+                        "Developed custom apogee detection algorithm achieving 98% accuracy in identifying altitude peaks for parachute deployment",
+                        "Integrated AltusMetrum and Missile Works COTS altimeters for redundant tracking of apogee, altitude, and GPS location",
+                        "Implemented onboard SD card logging system capturing 50MB+ of telemetry data per flight for post-mission analysis",
+                        "Contributed to 1st place Asia ranking and 4th place worldwide at Latin American Space Challenge in Brazil",
+                        "Reduced hardware costs by 35% compared to commercial flight computers while maintaining professional-grade accuracy"
+                    ]
+                },
+                {
+                    id: 4,
+                    title: "Task Management System",
+                    tags: ["JavaScript", "HTML5", "CSS3", "Bootstrap", "Local Storage API"],
+                    description: "Feature-rich browser-based task management application with persistent data storage",
+                    details: [
+                        "Developed full CRUD (Create, Read, Update, Delete) functionality enabling users to manage 100+ tasks efficiently",
+                        "Implemented responsive UI using Bootstrap framework, ensuring seamless experience across desktop, tablet, and mobile devices",
+                        "Built local storage system for client-side data persistence, eliminating need for backend infrastructure",
+                        "Created intuitive collapsible sections and status-based task organization, improving user productivity by 50%",
+                        "Designed clean interface with real-time task filtering and search capabilities for instant access to relevant items",
+                        "Optimized JavaScript performance achieving sub-100ms response time for all task operations"
+                    ]
+                }
+            ];
+
+            const publications = [
+                {
+                    id: 1,
+                    title: "Detection of Tuberculosis using Chest Xray and Hospital Recommendation System",
+                    link: "https://ieeexplore.ieee.org/document/10596214",
+                    description: "Published in IEEE Conference - Comprehensive system combining deep learning-based TB detection with intelligent hospital recommendations using hybrid filtering algorithms"
+                },
+                {
+                    id: 2,
+                    title: "Predicting Depression Levels Using Social Media Posts: A Comprehensive Survey",
+                    link: "https://ijsrem.com/download/predicting-depression-levels-using-social-media-posts-a-comprehensive-survey/",
+                    description: "Published in IJSREM - Extensive survey analyzing machine learning and NLP methods for depression prediction from social media data, reviewing 50+ research papers"
+                }
+            ];
+
+            const experience = [
+                {
+                    role: "Graduate Professional Assistant",
+                    company: "George Mason University",
+                    period: "September 2025 - Present",
+                    highlights: [
+                        "Manage mission-critical data pipelines using Informatica PowerCenter for ETL operations across admissions and recruitment systems, processing 10,000+ records monthly while troubleshooting integration issues and ensuring data quality compliance",
+                        "Administer CRM systems and develop Python automation scripts while querying relational databases (PostgreSQL/SQL Server) to generate reports, validate data integrity, and document technical processes for the Admissions Technology Department"
+                    ]
+                },
+                {
+                    role: "Web Developer Intern",
+                    company: "LetsGrowMore",
+                    period: "March 2023 - April 2023",
+                    highlights: [
+                        "Built 5+ full-stack web applications using HTML5, CSS3, JavaScript, and backend frameworks, serving 500+ users",
+                        "Developed responsive UI components with 95% cross-browser compatibility across Chrome, Firefox, Safari, and Edge",
+                        "Delivered production-ready task manager application with real-time updates and intuitive drag-and-drop interface",
+                        "Created mathematical operations calculator tool with advanced functionality, reducing calculation time by 60%",
+                        "Optimized application load times by 40% through code minification and asset compression techniques",
+                        "Collaborated with 3-person development team using Git for version control and agile methodologies for project management"
+                    ]
+                },
+                {
+                    role: "Developer Catalyst",
+                    company: "Salesforce",
+                    period: "October 2022 - December 2022",
+                    highlights: [
+                        "Earned 8+ Salesforce badges including Apex, Developer Superset, and Process Automation through rigorous hands-on training",
+                        "Completed 50+ hours of Trailblazer modules covering Lightning Web Components, Apex programming, and Salesforce architecture",
+                        "Developed and tested custom Salesforce applications using Apex and Visualforce, implementing business logic for 10+ use cases",
+                        "Gained practical experience in declarative automation tools including Process Builder, Flow Builder, and Workflow Rules",
+                        "Built Lightning Web Components with modern JavaScript frameworks, improving page performance by 30%",
+                        "Applied unit testing best practices achieving 85%+ code coverage across all Apex classes and triggers"
+                    ]
+                },
+                {
+                    role: "Web Developer Intern",
+                    company: "Oasis Infobyte",
+                    period: "May 2022 - June 2022",
+                    highlights: [
+                        "Optimized SQL database queries reducing average response time from 800ms to 150ms, improving application performance by 80%",
+                        "Created 15+ interactive frontend components using JavaScript and modern frameworks, enhancing user engagement by 45%",
+                        "Designed and implemented clean, accessible UI/UX layouts following WCAG 2.1 guidelines for 3 web-based platforms",
+                        "Improved website load speed by 55% through image optimization, lazy loading, and efficient CSS architecture",
+                        "Collaborated with senior developers to implement RESTful APIs connecting frontend interfaces with backend services",
+                        "Conducted browser compatibility testing across 8+ devices and screen sizes ensuring consistent user experience"
+                    ]
+                }
+            ];
+
+            const skills = {
+                "Languages": ["C++", "Python", "JavaScript", "SQL", "HTML", "CSS"],
+                "Frontend": ["React.js", "Tailwind CSS", "Bootstrap", "Vite"],
+                "Backend": ["Node.js", "Express.js", "Flask"],
+                "Database": ["PostgreSQL", "MySQL", "MongoDB"],
+                "Libraries": ["TensorFlow", "Keras", "NumPy", "Pandas", "Scikit-Learn", "Axios"],
+                "Tools": ["Git/GitHub", "VS Code", "Postman", "Vercel", "Render", "PowerBI", "Eagle", "Informatica"]
+            };
+
+            const bgClass = isDark 
+                ? "bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900" 
+                : "bg-gradient-to-br from-gray-50 via-blue-50 to-gray-50";
+            
+            const textPrimary = isDark ? "text-white" : "text-gray-900";
+            const textSecondary = isDark ? "text-gray-300" : "text-gray-700";
+            const textTertiary = isDark ? "text-gray-400" : "text-gray-600";
+            const cardBg = isDark 
+                ? "bg-white bg-opacity-5 backdrop-blur-lg border-gray-700" 
+                : "bg-white backdrop-blur-lg border-gray-200 shadow-lg";
+            const accentColor = isDark ? "text-blue-400" : "text-blue-600";
+            const accentBg = isDark ? "bg-blue-600" : "bg-blue-500";
+            const tagBg = isDark ? "bg-gray-700 text-gray-200" : "bg-gray-200 text-gray-700";
+            const navBg = isDark ? "bg-gray-900 bg-opacity-95" : "bg-white bg-opacity-95";
+
+            return (
+                <div className={`min-h-screen ${bgClass} transition-colors duration-300`}>
+                    {/* Navigation */}
+                    <nav className={`fixed top-0 left-0 right-0 ${navBg} backdrop-blur-lg border-b ${isDark ? 'border-gray-700' : 'border-gray-200'} z-40`}>
+                        <div className="container mx-auto px-6 py-4">
+                            <div className="flex justify-between items-center">
+                                <h1 className={`text-xl font-bold ${textPrimary} glow-text-hover`}>Shreya Shitole</h1>
+                                
+                                <div className="hidden md:flex items-center gap-8">
+                                    <button onClick={() => scrollToSection('education')} className={`${textSecondary} hover:text-blue-500 transition nav-link-glow`}>Education</button>
+                                    <button onClick={() => scrollToSection('skills')} className={`${textSecondary} hover:text-blue-500 transition nav-link-glow`}>Skills</button>
+                                    <button onClick={() => scrollToSection('projects')} className={`${textSecondary} hover:text-blue-500 transition nav-link-glow`}>Projects</button>
+                                    <button onClick={() => scrollToSection('publications')} className={`${textSecondary} hover:text-blue-500 transition nav-link-glow`}>Publications</button>
+                                    <button onClick={() => scrollToSection('experience')} className={`${textSecondary} hover:text-blue-500 transition nav-link-glow`}>Experience</button>
+                                    <button onClick={() => scrollToSection('achievements')} className={`${textSecondary} hover:text-blue-500 transition nav-link-glow`}>Achievements</button>
+                                    <button onClick={() => setIsDark(!isDark)} className={`p-2 rounded-full ${cardBg} border hover:scale-110 transition glow-on-hover`}>
+                                        {isDark ? '☀️' : '🌙'}
+                                    </button>
+                                </div>
+
+                                <div className="md:hidden flex items-center gap-4">
+                                    <button onClick={() => setIsDark(!isDark)} className={`p-2 rounded-full ${cardBg} border`}>
+                                        {isDark ? '☀️' : '🌙'}
+                                    </button>
+                                    <button onClick={() => setIsMenuOpen(!isMenuOpen)} className={textPrimary}>
+                                        {isMenuOpen ? '✕' : '☰'}
+                                    </button>
+                                </div>
+                            </div>
+
+                            {isMenuOpen && (
+                                <div className="md:hidden mt-4 pb-4 space-y-3">
+                                    <button onClick={() => scrollToSection('education')} className={`block w-full text-left ${textSecondary} hover:text-blue-500 transition`}>Education</button>
+                                    <button onClick={() => scrollToSection('skills')} className={`block w-full text-left ${textSecondary} hover:text-blue-500 transition`}>Skills</button>
+                                    <button onClick={() => scrollToSection('projects')} className={`block w-full text-left ${textSecondary} hover:text-blue-500 transition`}>Projects</button>
+                                    <button onClick={() => scrollToSection('publications')} className={`block w-full text-left ${textSecondary} hover:text-blue-500 transition`}>Publications</button>
+                                    <button onClick={() => scrollToSection('experience')} className={`block w-full text-left ${textSecondary} hover:text-blue-500 transition`}>Experience</button>
+                                    <button onClick={() => scrollToSection('achievements')} className={`block w-full text-left ${textSecondary} hover:text-blue-500 transition`}>Achievements</button>
+                                </div>
+                            )}
+                        </div>
+                    </nav>
+
+                    {/* Hero */}
+                    <header className="container mx-auto px-6 py-32 mt-16">
+                        <div className="max-w-4xl mx-auto text-center">
+                            {/* Profile Photo */}
+                            <div className="mb-8 flex justify-center">
+                                <div className="relative w-40 h-40 md:w-48 md:h-48">
+                                    <img 
+                                        src="https://github.com/shreyashitole02/portfolio/raw/main/profile-photo.jpg" 
+                                        alt="Shreya Shitole"
+                                        className={`w-full h-full object-cover rounded-full border-4 ${isDark ? 'border-blue-500' : 'border-blue-400'} shadow-2xl glow-on-hover`}
+                                        onError={(e) => {
+                                            e.target.style.display = 'none';
+                                            e.target.nextElementSibling.style.display = 'flex';
+                                        }}
+                                    />
+                                    <div 
+                                        style={{display: 'none'}}
+                                        className={`w-full h-full rounded-full border-4 ${isDark ? 'border-blue-500 bg-gray-800' : 'border-blue-400 bg-gray-200'} flex items-center justify-center text-6xl font-bold ${accentColor}`}
+                                    >
+                                        SS
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <h1 className={`text-5xl md:text-7xl font-bold ${textPrimary} mb-6 glow-text-hover`}>
+                                Shreya Shitole
+                            </h1>
+                            <p className={`text-xl md:text-2xl ${textSecondary} mb-8`}>
+                                Computer Science Graduate Student | Software Developer | AI/ML Enthusiast
+                            </p>
+                            <div className="flex justify-center gap-6 mb-8">
+                                <a href="mailto:shitoleshreya2002@gmail.com" className={`${accentColor} hover:scale-110 transition text-2xl glow-on-hover p-2 rounded-full`} title="Email me">✉️</a>
+                                <a href="https://linkedin.com/in/shreya-shitole" target="_blank" rel="noopener noreferrer" className={`${accentColor} hover:scale-110 transition text-2xl glow-on-hover p-2 rounded-full`} title="LinkedIn Profile">💼</a>
+                                <a href="https://github.com/shreyashitole02" target="_blank" rel="noopener noreferrer" className={`${accentColor} hover:scale-110 transition text-2xl glow-on-hover p-2 rounded-full`} title="GitHub Profile">💻</a>
+                            </div>
+                            <p className={`${textSecondary} text-lg mb-6`}>
+                                📍 Fairfax, Virginia
+                            </p>
+                            <button 
+                                onClick={handleDownloadResume}
+                                className={`inline-block ${accentBg} hover:opacity-90 text-white font-bold py-3 px-8 rounded-full transition glow-on-hover`}
+                            >
+                                📥 Resume
+                            </button>
+                        </div>
+                    </header>
+
+                    {/* Education */}
+                    <section id="education" className="container mx-auto px-6 py-16">
+                        <div className="max-w-4xl mx-auto">
+                            <div className="flex items-center gap-3 mb-8">
+                                <span className={`${accentColor} text-3xl`}>🎓</span>
+                                <h2 className={`text-3xl font-bold ${textPrimary}`}>Education</h2>
+                            </div>
+                            <div className="space-y-6">
+                                <div className={`${cardBg} rounded-xl p-6 border glow-on-hover`}>
+                                    <div className="flex justify-between items-start mb-2 flex-wrap gap-2">
+                                        <h3 className={`text-xl font-bold ${textPrimary}`}>Master of Science in Computer Science</h3>
+                                        <span className={accentColor}>GPA: 4.0/4.0</span>
+                                    </div>
+                                    <p className={textSecondary}>George Mason University, Fairfax VA</p>
+                                    <p className={`${textTertiary} text-sm`}>Jan 2025 - Dec 2026</p>
+                                </div>
+                                <div className={`${cardBg} rounded-xl p-6 border glow-on-hover`}>
+                                    <div className="flex justify-between items-start mb-2 flex-wrap gap-2">
+                                        <h3 className={`text-xl font-bold ${textPrimary}`}>Bachelor of Engineering in Information Technology</h3>
+                                        <span className={accentColor}>GPA: 3.68/4.0</span>
+                                    </div>
+                                    <p className={textSecondary}>Savitribai Phule Pune University, India</p>
+                                    <p className={`${textTertiary} text-sm`}>June 2020 - May 2024</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Skills */}
+                    <section id="skills" className="container mx-auto px-6 py-16">
+                        <div className="max-w-4xl mx-auto">
+                            <div className="flex items-center gap-3 mb-8">
+                                <span className={`${accentColor} text-3xl`}>💻</span>
+                                <h2 className={`text-3xl font-bold ${textPrimary}`}>Technical Skills</h2>
+                            </div>
+                            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                {Object.entries(skills).map(([category, items]) => (
+                                    <div key={category} className={`${cardBg} rounded-xl p-6 border glow-on-hover`}>
+                                        <h3 className={`text-lg font-bold ${accentColor} mb-4`}>{category}</h3>
+                                        <div className="flex flex-wrap gap-2">
+                                            {items.map((skill) => (
+                                                <span key={skill} className={`${tagBg} px-3 py-1 rounded-full text-sm hover:scale-105 transition cursor-default`}>
+                                                    {skill}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Projects */}
+                    <section id="projects" className="container mx-auto px-6 py-16">
+                        <div className="max-w-4xl mx-auto">
+                            <div className="flex items-center gap-3 mb-8">
+                                <span className={`${accentColor} text-3xl`}>🏆</span>
+                                <h2 className={`text-3xl font-bold ${textPrimary}`}>Featured Projects</h2>
+                            </div>
+                            <div className="space-y-6">
+                                {projects.map((project) => (
+                                    <div key={project.id} className={`${cardBg} rounded-xl border overflow-hidden glow-on-hover`}>
+                                        <div className="p-6">
+                                            <h3 className={`text-xl font-bold ${textPrimary} mb-3`}>{project.title}</h3>
+                                            <p className={`${textSecondary} mb-4`}>{project.description}</p>
+                                            <div className="flex flex-wrap gap-2 mb-4">
+                                                {project.tags.map((tag) => (
+                                                    <span key={tag} className={`${tagBg} px-3 py-1 rounded-full text-xs hover:scale-105 transition cursor-default`}>{tag}</span>
+                                                ))}
+                                            </div>
+                                            <div className="flex gap-4 items-center flex-wrap">
+                                                <button
+                                                    onClick={() => setExpandedProject(expandedProject === project.id ? null : project.id)}
+                                                    className={`flex items-center gap-2 ${accentColor} hover:underline transition`}
+                                                >
+                                                    {expandedProject === project.id ? 'Show Less ▲' : 'Show More ▼'}
+                                                </button>
+                                                {project.liveLink && (
+                                                    <a 
+                                                        href={project.liveLink} 
+                                                        target="_blank" 
+                                                        rel="noopener noreferrer"
+                                                        className={`flex items-center gap-2 ${accentBg} hover:opacity-90 text-white px-4 py-2 rounded-full text-sm transition glow-on-hover`}
+                                                    >
+                                                        🌐 Live Demo
+                                                    </a>
+                                                )}
+                                                {project.githubLink && (
+                                                    <a 
+                                                        href={project.githubLink} 
+                                                        target="_blank" 
+                                                        rel="noopener noreferrer"
+                                                        className={`flex items-center gap-2 ${isDark ? 'bg-gray-700' : 'bg-gray-600'} hover:opacity-90 text-white px-4 py-2 rounded-full text-sm transition glow-on-hover`}
+                                                    >
+                                                        💻 Code
+                                                    </a>
+                                                )}
+                                            </div>
+                                        </div>
+                                        {expandedProject === project.id && (
+                                            <div className={`${isDark ? 'bg-gray-800 bg-opacity-50' : 'bg-gray-100'} p-6 border-t ${isDark ? 'border-gray-700' : 'border-gray-200'}`}>
+                                                <ul className="space-y-2">
+                                                    {project.details.map((detail, idx) => (
+                                                        <li key={idx} className={`${textSecondary} flex items-start gap-2`}>
+                                                            <span className={`${accentColor} mt-1`}>•</span>
+                                                            <span>{detail}</span>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Publications */}
+                    <section id="publications" className="container mx-auto px-6 py-16">
+                        <div className="max-w-4xl mx-auto">
+                            <div className="flex items-center gap-3 mb-8">
+                                <span className={`${accentColor} text-3xl`}>📄</span>
+                                <h2 className={`text-3xl font-bold ${textPrimary}`}>Research Publications</h2>
+                            </div>
+                            <div className="space-y-6">
+                                {publications.map((pub) => (
+                                    
+                                        key={pub.id}
+                                        href={pub.link}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className={`${cardBg} rounded-xl p-6 border block transition group glow-on-hover`}
+                                    >
+                                        <div className="flex justify-between items-start gap-4">
+                                            <div className="flex-1">
+                                                <h3 className={`text-lg font-bold ${textPrimary} mb-2 group-hover:text-blue-500 transition`}>
+                                                    {pub.title}
+                                                </h3>
+                                                <p className={textSecondary}>{pub.description}</p>
+                                            </div>
+                                            <span className={`${accentColor} flex-shrink-0 group-hover:scale-110 transition text-xl`}>🔗</span>
+                                        </div>
+                                    </a>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Experience */}
+                    <section id="experience" className="container mx-auto px-6 py-16">
+                        <div className="max-w-4xl mx-auto">
+                            <div className="flex items-center gap-3 mb-8">
+                                <span className={`${accentColor} text-3xl`}>💼</span>
+                                <h2 className={`text-3xl font-bold ${textPrimary}`}>Work Experience</h2>
+                            </div>
+                            <div className="space-y-6">
+                                {experience.map((exp, idx) => (
+                                    <div key={idx} className={`${cardBg} rounded-xl p-6 border glow-on-hover`}>
+                                        <div className="flex justify-between items-start mb-3 flex-wrap gap-2">
+                                            <div>
+                                                <h3 className={`text-xl font-bold ${textPrimary}`}>{exp.role}</h3>
+                                                <p className={accentColor}>{exp.company}</p>
+                                            </div>
+                                            <span className={`${textTertiary} text-sm`}>{exp.period}</span>
+                                        </div>
+                                        <ul className="space-y-2">
+                                            {exp.highlights.map((highlight, i) => (
+                                                <li key={i} className={`${textSecondary} flex items-start gap-2`}>
+                                                    <span className={`${accentColor} mt-1`}>•</span>
+                                                    <span>{highlight}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Achievements */}
+                    <section id="achievements" className="container mx-auto px-6 py-16">
+                        <div className="max-w-4xl mx-auto">
+                            <h2 className={`text-3xl font-bold ${textPrimary} mb-8`}>Notable Achievements</h2>
+                            <div className="grid md:grid-cols-2 gap-6">
+                                <div className={`${cardBg} rounded-xl p-6 border glow-on-hover`}>
+                                    <h3 className={`text-xl font-bold ${textPrimary} mb-2`}>🚀 International Rocketry Competition</h3>
+                                    <p className={textSecondary}>1st in Asia, 4th Worldwide at Latin American Space Challenge, Brazil</p>
+                                    <p className={`${textTertiary} text-sm mt-2`}>Built power circuit boards with sensors as Avionics Engineer</p>
+                                </div>
+                                <div className={`${cardBg} rounded-xl p-6 border glow-on-hover`}>
+                                    <h3 className={`text-xl font-bold ${textPrimary} mb-2`}>📚 Leadership Experience</h3>
+                                    <p className={textSecondary}>Head of College Magazine Team & Fitness Coach</p>
+                                    <p className={`${textTertiary} text-sm mt-2`}>Led teams, organized events, and coached 100+ students</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Footer */}
+                    <footer className="container mx-auto px-6 py-12 text-center">
+                        <p className={`${textSecondary} mb-4`}>Let's build something amazing together!</p>
+                        <a href="mailto:shitoleshreya2002@gmail.com" className={`inline-block ${accentBg} hover:opacity-90 text-white font-bold py-3 px-8 rounded-full transition glow-on-hover`}>
+                            Get In Touch
+                        </a>
+                        <p className={`${textTertiary} text-sm mt-8`}>© 2025 Shreya Shitole. All rights reserved.</p>
+                    </footer>
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<Portfolio />);
+    </script>
+</body>
+</html>
