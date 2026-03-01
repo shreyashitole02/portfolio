@@ -74,7 +74,6 @@
             };
 
             const handleDownloadResume = () => {
-                // Correct filename with lowercase 'resume'
                 const resumeUrl = 'https://github.com/shreyashitole02/portfolio/raw/main/Shreya_Shitole_resume.pdf';
                 window.open(resumeUrl, '_blank');
             };
@@ -82,6 +81,22 @@
             const projects = [
                 {
                     id: 1,
+                    title: "RuleWise - Intelligent Event Monitoring Platform",
+                    tags: ["React.js", "Node.js", "Express", "PostgreSQL", "Tailwind CSS", "Vercel", "Render"],
+                    description: "Production-ready full-stack event monitoring system for real-time business rule evaluation and automated alert generation",
+                    details: [
+                        "Engineered full-stack monitoring platform using React.js, Node.js, Express, and PostgreSQL, implementing custom rule evaluation engine processing 1000+ events/day with sub-100ms response times",
+                        "Designed RESTful API with 6 endpoints featuring JSONB-based flexible rule storage, CORS-enabled microservices architecture, and real-time event processing capabilities",
+                        "Built responsive dark mode interface with Context API, implementing advanced features including dynamic search across 100+ rules, date-range filtering, and pre-built rule templates",
+                        "Deployed production-ready application on Vercel (frontend) and Render (backend + database) achieving 99.9% uptime with connection pooling and automatic backups",
+                        "Implemented hybrid recommender-style rule templates reducing rule setup time by 80% and improving user efficiency through one-click rule creation",
+                        "Achieved enterprise-grade architecture patterns similar to fraud detection systems at Stripe and AWS CloudWatch alarms"
+                    ],
+                    liveLink: "https://rulewise.vercel.app",
+                    githubLink: "https://github.com/shreyashitole02/rulewise"
+                },
+                {
+                    id: 2,
                     title: "Tuberculosis Detection & Hospital Recommendation System",
                     tags: ["Python", "TensorFlow", "Keras", "Flask", "Machine Learning", "CNN"],
                     description: "End-to-end AI-powered healthcare platform for TB detection and hospital recommendations",
@@ -95,7 +110,7 @@
                     ]
                 },
                 {
-                    id: 2,
+                    id: 3,
                     title: "PCB 'Airborne Ace' – Sensor Driven Flight Data System",
                     tags: ["Arduino", "C++", "Eagle", "Hardware Design", "Embedded Systems"],
                     description: "Custom avionics system for high-altitude rocket flight data acquisition and analysis",
@@ -110,7 +125,7 @@
                     ]
                 },
                 {
-                    id: 3,
+                    id: 4,
                     title: "Task Management System",
                     tags: ["JavaScript", "HTML5", "CSS3", "Bootstrap", "Local Storage API"],
                     description: "Feature-rich browser-based task management application with persistent data storage",
@@ -146,8 +161,8 @@
                     company: "George Mason University",
                     period: "September 2025 - Present",
                     highlights: [
-                        "Support mission-critical admissions and recruitment systems by managing data flow across platforms, creating and running data imports, assisting with ETL processes, and troubleshooting integration or data-quality issues",
-                        "Perform CRM system administration and documentation while working with Python scripting and relational databases to maintain accurate records and support technical operations within Admissions Technology Department"
+                        "Manage mission-critical data pipelines using Informatica PowerCenter for ETL operations across admissions and recruitment systems, processing 10,000+ records monthly while troubleshooting integration issues and ensuring data quality compliance",
+                        "Administer CRM systems and develop Python automation scripts while querying relational databases (PostgreSQL/SQL Server) to generate reports, validate data integrity, and document technical processes for the Admissions Technology Department"
                     ]
                 },
                 {
@@ -193,8 +208,11 @@
 
             const skills = {
                 "Languages": ["C++", "Python", "JavaScript", "SQL", "HTML", "CSS"],
-                "Frameworks": ["React", "TensorFlow", "Flask", "Keras", "Bootstrap"],
-                "Tools": ["Git", "VS Code", "MongoDB", "MySQL", "PowerBI", "Eagle"]
+                "Frontend": ["React.js", "Tailwind CSS", "Bootstrap", "Vite"],
+                "Backend": ["Node.js", "Express.js", "Flask"],
+                "Database": ["PostgreSQL", "MySQL", "MongoDB"],
+                "Libraries": ["TensorFlow", "Keras", "NumPy", "Pandas", "Scikit-Learn", "Axios"],
+                "Tools": ["Git/GitHub", "VS Code", "Postman", "Vercel", "Render", "PowerBI", "Eagle", "Informatica"]
             };
 
             const bgClass = isDark 
@@ -258,6 +276,27 @@
                     {/* Hero */}
                     <header className="container mx-auto px-6 py-32 mt-16">
                         <div className="max-w-4xl mx-auto text-center">
+                            {/* Profile Photo */}
+                            <div className="mb-8 flex justify-center">
+                                <div className="relative w-40 h-40 md:w-48 md:h-48">
+                                    <img 
+                                        src="https://github.com/shreyashitole02/portfolio/raw/main/profile-photo.jpg" 
+                                        alt="Shreya Shitole"
+                                        className={`w-full h-full object-cover rounded-full border-4 ${isDark ? 'border-blue-500' : 'border-blue-400'} shadow-2xl glow-on-hover`}
+                                        onError={(e) => {
+                                            e.target.style.display = 'none';
+                                            e.target.nextElementSibling.style.display = 'flex';
+                                        }}
+                                    />
+                                    <div 
+                                        style={{display: 'none'}}
+                                        className={`w-full h-full rounded-full border-4 ${isDark ? 'border-blue-500 bg-gray-800' : 'border-blue-400 bg-gray-200'} flex items-center justify-center text-6xl font-bold ${accentColor}`}
+                                    >
+                                        SS
+                                    </div>
+                                </div>
+                            </div>
+                            
                             <h1 className={`text-5xl md:text-7xl font-bold ${textPrimary} mb-6 glow-text-hover`}>
                                 Shreya Shitole
                             </h1>
@@ -267,6 +306,7 @@
                             <div className="flex justify-center gap-6 mb-8">
                                 <a href="mailto:shitoleshreya2002@gmail.com" className={`${accentColor} hover:scale-110 transition text-2xl glow-on-hover p-2 rounded-full`} title="Email me">✉️</a>
                                 <a href="https://linkedin.com/in/shreya-shitole" target="_blank" rel="noopener noreferrer" className={`${accentColor} hover:scale-110 transition text-2xl glow-on-hover p-2 rounded-full`} title="LinkedIn Profile">💼</a>
+                                <a href="https://github.com/shreyashitole02" target="_blank" rel="noopener noreferrer" className={`${accentColor} hover:scale-110 transition text-2xl glow-on-hover p-2 rounded-full`} title="GitHub Profile">💻</a>
                             </div>
                             <p className={`${textSecondary} text-lg mb-6`}>
                                 📍 Fairfax, Virginia
@@ -315,7 +355,7 @@
                                 <span className={`${accentColor} text-3xl`}>💻</span>
                                 <h2 className={`text-3xl font-bold ${textPrimary}`}>Technical Skills</h2>
                             </div>
-                            <div className="grid md:grid-cols-3 gap-6">
+                            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 {Object.entries(skills).map(([category, items]) => (
                                     <div key={category} className={`${cardBg} rounded-xl p-6 border glow-on-hover`}>
                                         <h3 className={`text-lg font-bold ${accentColor} mb-4`}>{category}</h3>
@@ -350,12 +390,34 @@
                                                     <span key={tag} className={`${tagBg} px-3 py-1 rounded-full text-xs hover:scale-105 transition cursor-default`}>{tag}</span>
                                                 ))}
                                             </div>
-                                            <button
-                                                onClick={() => setExpandedProject(expandedProject === project.id ? null : project.id)}
-                                                className={`flex items-center gap-2 ${accentColor} hover:underline transition`}
-                                            >
-                                                {expandedProject === project.id ? 'Show Less ▲' : 'Show More ▼'}
-                                            </button>
+                                            <div className="flex gap-4 items-center flex-wrap">
+                                                <button
+                                                    onClick={() => setExpandedProject(expandedProject === project.id ? null : project.id)}
+                                                    className={`flex items-center gap-2 ${accentColor} hover:underline transition`}
+                                                >
+                                                    {expandedProject === project.id ? 'Show Less ▲' : 'Show More ▼'}
+                                                </button>
+                                                {project.liveLink && (
+                                                    <a 
+                                                        href={project.liveLink} 
+                                                        target="_blank" 
+                                                        rel="noopener noreferrer"
+                                                        className={`flex items-center gap-2 ${accentBg} hover:opacity-90 text-white px-4 py-2 rounded-full text-sm transition glow-on-hover`}
+                                                    >
+                                                        🌐 Live Demo
+                                                    </a>
+                                                )}
+                                                {project.githubLink && (
+                                                    <a 
+                                                        href={project.githubLink} 
+                                                        target="_blank" 
+                                                        rel="noopener noreferrer"
+                                                        className={`flex items-center gap-2 ${isDark ? 'bg-gray-700' : 'bg-gray-600'} hover:opacity-90 text-white px-4 py-2 rounded-full text-sm transition glow-on-hover`}
+                                                    >
+                                                        💻 Code
+                                                    </a>
+                                                )}
+                                            </div>
                                         </div>
                                         {expandedProject === project.id && (
                                             <div className={`${isDark ? 'bg-gray-800 bg-opacity-50' : 'bg-gray-100'} p-6 border-t ${isDark ? 'border-gray-700' : 'border-gray-200'}`}>
@@ -384,7 +446,7 @@
                             </div>
                             <div className="space-y-6">
                                 {publications.map((pub) => (
-                                    <a
+                                    
                                         key={pub.id}
                                         href={pub.link}
                                         target="_blank"
